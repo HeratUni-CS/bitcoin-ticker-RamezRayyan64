@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
 class PriceScreen extends StatefulWidget {
+  const PriceScreen({super.key});
+
+  static const String id = '/price_screen';
+
   @override
-  _PriceScreenState createState() => _PriceScreenState();
+  State<PriceScreen> createState() => _PriceScreenState();
 }
 
 class _PriceScreenState extends State<PriceScreen> {
