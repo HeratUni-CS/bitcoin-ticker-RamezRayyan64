@@ -40,13 +40,14 @@ class CoinData {
     Map<String, String> cryptoPrices = {};
     for (String crypto in cryptoList) {
       String requestURL = '$bitcoinAverageURL/$crypto$selectedCurrency';
-      http.Response response = await http.get(Uri.parse(requestURL));
+      http.Response response = await http.get(Uri.parse(requestURL),
+          headers: {'x-ba-key': 'ZGIxM2MwMzIyNjJlNGM2NmEyNTE2ZTg4YzhhZjU5MWQ'});
       if (response.statusCode == 200) {
         var decodedData = jsonDecode(response.body);
         double lastPrice = decodedData['last'];
         cryptoPrices[crypto] = lastPrice.toStringAsFixed(0);
       } else {
-        debugPrint('${response.statusCode}');
+        debugPrint('${response.reasonPhrase}');
         throw 'Problem with the get request';
       }
     }
